@@ -1,3 +1,4 @@
+import 'package:demo_flutter_provider/ProviderPart2/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_flutter_provider/application_color.dart';
 import 'package:provider/provider.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: CartScreen(),
     );
   }
 }
