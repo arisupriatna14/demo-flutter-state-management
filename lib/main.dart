@@ -1,9 +1,20 @@
 import 'package:demo_flutter_provider/ProviderPart2/cart_screen.dart';
+import 'package:demo_flutter_provider/ProviderPart3/theme.dart';
+import 'package:demo_flutter_provider/ProviderPart3/uiset.dart';
+import 'package:demo_flutter_provider/home.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_flutter_provider/application_color.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => UISet()),
+      ChangeNotifierProvider(create: (_) => ThemeNotifier())
+    ],
+    child: MyApp(),
+  )
+);
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -11,10 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: CartScreen(),
+      theme: Provider.of<ThemeNotifier>(context).currentThemeData,
+      home: HomeScreen(),
     );
   }
 }
